@@ -1,0 +1,43 @@
+/******************************************************************************
+ Aim: To find the given number is Armstrong Number or not
+ author: Bhaskar Reddy Krishnamareddypalli
+ Date: 05 July 2018
+*******************************************************************************/
+#include <stdio.h>
+#include<math.h>
+int power();
+int main()
+{
+    int number,power_sum=0,length=0,copy,temp_var,duplicate;
+    printf("Enter the number for Armstrong Verificatipon Process\n");
+    scanf("%d",&number);
+    copy=number;
+    duplicate=number;
+    while(copy>0)
+    {
+        copy=copy/10;
+        length++;
+    }
+    while(number>0)
+    {
+        temp_var=number%10;
+        power_sum=power_sum+power(temp_var,length);
+        number=number/10;
+    }
+    if(power_sum==duplicate)
+    {
+        printf("The number %d is an Armstrong number\n",duplicate);
+    }
+    else
+    {
+         printf("The number %d is Not an Armstrong number\n",duplicate);
+    }
+    return 0;
+}
+int power(int base, int powerRaised)
+{
+    if (powerRaised != 0)
+        return (base*power(base, powerRaised-1));
+    else
+        return 1;
+}
